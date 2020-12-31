@@ -1,0 +1,73 @@
+2020-12-30 17:52:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "MY-DATABASE" no encontrado
+Schema "MY-DATABASE" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS `my-database`.`departments` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dpt_name` VARCHAR(45) NULL,
+  `dpt_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `dpt_id_UNIQUE` (`dpt_id` ASC))
+ [90079-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.getSchema(Parser.java:1194)
+	at org.h2.command.Parser.getSchema(Parser.java:1200)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8368)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at com.mdangelo.jdbc_app_1.utils.DataSqlInit.createDepartments(DataSqlInit.java:32)
+	at com.mdangelo.jdbc_app_1.utils.DataSqlInit.main(DataSqlInit.java:11)
+2020-12-30 17:58:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE IF NOT EXISTS DEPARTMENTS (
+  ID INT NOT NULL AUTO_INCREMENT,
+  DPT_NAME VARCHAR(45) NULL,
+  DPT_ID VARCHAR(45) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE INDEX DPT_ID_UNIQUE (DPT_ID ASC))
+ENGINE =[*] INNODB;"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS DEPARTMENTS (
+  ID INT NOT NULL AUTO_INCREMENT,
+  DPT_NAME VARCHAR(45) NULL,
+  DPT_ID VARCHAR(45) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE INDEX DPT_ID_UNIQUE (DPT_ID ASC))
+ENGINE =[*] INNODB;"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS departments (
+  id INT NOT NULL AUTO_INCREMENT,
+  dpt_name VARCHAR(45) NULL,
+  dpt_id VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX dpt_id_UNIQUE (dpt_id ASC))
+ENGINE = InnoDB; [42001-200]
+2020-12-30 17:58:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE DEPARTMENTS (
+  ID INT NOT NULL AUTO_INCREMENT,
+  DPT_NAME VARCHAR(45) NULL,
+  DPT_ID VARCHAR(45) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE INDEX DPT_ID_UNIQUE (DPT_ID ASC))
+ENGINE =[*] INNODB;"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE DEPARTMENTS (
+  ID INT NOT NULL AUTO_INCREMENT,
+  DPT_NAME VARCHAR(45) NULL,
+  DPT_ID VARCHAR(45) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE INDEX DPT_ID_UNIQUE (DPT_ID ASC))
+ENGINE =[*] INNODB;"; expected "identifier"; SQL statement:
+CREATE TABLE departments (
+  id INT NOT NULL AUTO_INCREMENT,
+  dpt_name VARCHAR(45) NULL,
+  dpt_id VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX dpt_id_UNIQUE (dpt_id ASC))
+ENGINE = InnoDB; [42001-200]
